@@ -26,12 +26,7 @@ import {isCollapse} from '@/components/layout/isCollapse.ts'
           <span> 用户管理</span>
         </el-menu-item>
 
-        <el-menu-item index="/classmanage">
-          <el-icon>
-            <IEpSetting />
-          </el-icon>
-          <span> 课程管理</span>
-        </el-menu-item>
+
       </el-sub-menu>
 
 
@@ -40,19 +35,32 @@ import {isCollapse} from '@/components/layout/isCollapse.ts'
           <el-icon>
             <IEpSetting />
           </el-icon>
-          <span> 广告管理</span>
+          <span>业务管理</span>
         </template>
-        <el-menu-item index="/qq">
+        <el-menu-item index="/products">
           <el-icon>
             <IEpSetting />
           </el-icon>
-          <span> QQ</span>
+          <span> 货物管理</span>
         </el-menu-item>
-        <el-menu-item index="/wx">
+        <el-menu-item index="/inventory">
           <el-icon>
             <IEpSetting />
           </el-icon>
-          <span> WX</span>
+          <span> 库存管理</span>
+        </el-menu-item>
+        <el-menu-item index="/purchaseorders">
+          <el-icon>
+            <IEpSetting />
+          </el-icon>
+          <span> 采购管理</span>
+        </el-menu-item>
+
+        <el-menu-item index="/salesorders">
+          <el-icon>
+            <IEpSetting />
+          </el-icon>
+          <span> 销售管理</span>
         </el-menu-item>
       </el-sub-menu>
 

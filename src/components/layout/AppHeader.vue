@@ -8,14 +8,14 @@ import {isCollapse} from '@/components/layout/isCollapse.ts'
       <IEpFold v-show="!isCollapse" />
     </el-icon>
     <!--面包屑-->
-    <el-breadcrumb separator="/">
-      <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
-      <el-breadcrumb-item>
-        <a href="/">promotion management</a>
-      </el-breadcrumb-item>
-      <el-breadcrumb-item>promotion list</el-breadcrumb-item>
-      <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
-    </el-breadcrumb>
+<!--    <el-breadcrumb separator="/">-->
+<!--      <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>-->
+<!--      <el-breadcrumb-item>-->
+<!--        <a href="/">promotion management</a>-->
+<!--      </el-breadcrumb-item>-->
+<!--      <el-breadcrumb-item>promotion list</el-breadcrumb-item>-->
+<!--      <el-breadcrumb-item>promotion detail</el-breadcrumb-item>-->
+<!--    </el-breadcrumb>-->
 
     <!--    下列菜单-->
     <el-dropdown>
