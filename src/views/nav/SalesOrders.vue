@@ -1,6 +1,16 @@
 <template>
   <div>
-    <el-button type="primary" @click="handleAdd">添加</el-button>
+    <div>
+      <el-date-picker
+        v-model="dateRange"
+        end-placeholder="结束日期"
+        range-separator="至"
+        start-placeholder="开始日期"
+        type="daterange"
+        value-format="YYYY-MM-DD"
+      />
+      <el-button type="primary" @click="searchOrders">搜索</el-button>
+    </div>
 
     <el-table :data="tableData" style="width: 100%">
       <el-table-column label="订单ID" prop="orderId" width="180">
@@ -9,7 +19,11 @@
       <el-table-column label="货物ID" prop="productId" />
       <el-table-column label="数量" prop="quantity" />
       <el-table-column label="总收入" prop="totalRevenue" />
-      <el-table-column label="订单日期" prop="orderDate" width="180" />
+      <el-table-column label="订单日期" prop="orderDate" width="180">
+        <template #default="scope">
+          {{ formatDate(scope.row.orderDate) }}
+        </template>
+      </el-table-column>
 
       <el-table-column label="操作" width="150">
         <template #default="scope">
@@ -31,7 +45,7 @@
           <el-input v-model="form.totalRevenue" />
         </el-form-item>
         <el-form-item label="订单日期">
-          <el-date-picker v-model="form.orderDate" placeholder="选择日期" type="date" />
+          <el-input :value="formatDate(form.orderDate)" disabled />
         </el-form-item>
       </el-form>
       <template #footer>
@@ -103,6 +117,14 @@ async function handleConfirm() {
   } catch (error) {
     alert(error)
   }
+}
+
+function formatDate(date: string): string {
+  const parsedDate = new Date(date)
+  const year = parsedDate.getFullYear()
+  const month = String(parsedDate.getMonth() + 1).padStart(2, '0')
+  const day = String(parsedDate.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
 }
 
 onMounted(() => {

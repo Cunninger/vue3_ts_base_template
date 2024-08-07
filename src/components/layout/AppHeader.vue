@@ -28,7 +28,8 @@ import {isCollapse} from '@/components/layout/isCollapse.ts'
       <template #dropdown>
         <el-dropdown-menu>
           <el-dropdown-item>用户姓名</el-dropdown-item>
-          <el-dropdown-item disabled>退出</el-dropdown-item>
+<!--          点击退出回到登录页-->
+          <el-dropdown-item>退出</el-dropdown-item>
 
         </el-dropdown-menu>
       </template>

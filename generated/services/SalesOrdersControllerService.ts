@@ -66,6 +66,53 @@ export class SalesOrdersControllerService {
         });
     }
     /**
+     * 根据订单日期范围查询
+     * @param end end
+     * @param start start
+     * @returns SalesOrders OK
+     * @throws ApiError
+     */
+    public static selectByOrderDateBetweenUsingGet1(
+        end?: string,
+        start?: string,
+    ): CancelablePromise<Array<SalesOrders>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/sales_orders/selectByOrderDateRange',
+            query: {
+                'end': end,
+                'start': start,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+    /**
+     * 根据order_id 或者 product_id查询
+     * @param orderIdOrProductId orderIdOrProductId
+     * @returns SalesOrders OK
+     * @throws ApiError
+     */
+    public static selectByOrderIdOrProductIdUsingGet1(
+        orderIdOrProductId?: number,
+    ): CancelablePromise<Array<SalesOrders>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/sales_orders/selectByOrderIdOrProductId',
+            query: {
+                'orderIdOrProductId': orderIdOrProductId,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+    /**
      * 查找销售订单
      * @param id id
      * @returns SalesOrders OK

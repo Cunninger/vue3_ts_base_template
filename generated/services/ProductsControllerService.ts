@@ -66,6 +66,28 @@ export class ProductsControllerService {
         });
     }
     /**
+     * 根据货物名、类别、供应商模糊查询货物
+     * @param productNameOrTypeOrSupplier productNameOrTypeOrSupplier
+     * @returns Products OK
+     * @throws ApiError
+     */
+    public static selectByConditionUsingGet(
+        productNameOrTypeOrSupplier?: string,
+    ): CancelablePromise<Array<Products>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/products/selectByProductNameOrCategoryOrManufacturer',
+            query: {
+                'productNameOrTypeOrSupplier': productNameOrTypeOrSupplier,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+    /**
      * 查找产品
      * @param id id
      * @returns Products OK

@@ -66,6 +66,28 @@ export class InventoryControllerService {
         });
     }
     /**
+     * 根据Inventory_id 或者 product_id 查找库存
+     * @param inventoryIdOrProductId inventoryIdOrProductId
+     * @returns Inventory OK
+     * @throws ApiError
+     */
+    public static selectByInventoryIdAndProductIdUsingGet(
+        inventoryIdOrProductId?: number,
+    ): CancelablePromise<Array<Inventory>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/inventory/selectByInventoryIdOrProductId',
+            query: {
+                'inventoryIdOrProductId': inventoryIdOrProductId,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+    /**
      * 查找库存
      * @param id id
      * @returns Inventory OK

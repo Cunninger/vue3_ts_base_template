@@ -52,6 +52,31 @@ export class SysUserControllerService {
         });
     }
     /**
+     * 根据用户名和邮箱模糊查找用户
+     * @param email 邮箱
+     * @param name 用户名
+     * @returns SysUser OK
+     * @throws ApiError
+     */
+    public static findByNameAndEmailUsingGet(
+        email?: string,
+        name?: string,
+    ): CancelablePromise<Array<SysUser>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/sys_user/findByNameAndEmail',
+            query: {
+                'email': email,
+                'name': name,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+    /**
      * 登录
      * @param loginVo loginVo
      * @returns ApiResponse_SysUser_ OK
@@ -74,18 +99,18 @@ export class SysUserControllerService {
     }
     /**
      * 注册
-     * @param sysUser sysUser
-     * @returns number OK
+     * @param loginVo loginVo
+     * @returns ApiResponse_SysUser_ OK
      * @returns any Created
      * @throws ApiError
      */
     public static registerUsingPost(
-        sysUser: SysUser,
-    ): CancelablePromise<number | any> {
+        loginVo: LoginVo,
+    ): CancelablePromise<ApiResponse_SysUser_ | any> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/sys_user/register',
-            body: sysUser,
+            body: loginVo,
             errors: {
                 401: `Unauthorized`,
                 403: `Forbidden`,

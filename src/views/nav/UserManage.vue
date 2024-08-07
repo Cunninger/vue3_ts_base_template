@@ -55,17 +55,18 @@
 import { SalesOrdersControllerService, type SysUser, SysUserControllerService } from '../../../generated'
 
 interface TableDataItem {
-  id: number;
-  name: string;
-  email: string;
-  address: string;
-  phone: string;
+  id?: number;//为什么是？:  因为这个字段是可选的  也就是说这个字段可以为空
+  name?: string;
+  email?: string;
+  address?: string;
+  phone?: string;
 }
 
 const tableData: Ref<TableDataItem[]> = ref([])
 const dialogVisible = ref(false)
 const dialogTitle = ref('')
 const form = ref<TableDataItem>({})
+const searchKeyword = ref('')
 
 async function fetchData(): Promise<void> {
   try {
@@ -103,9 +104,10 @@ async function handleDelete(row: TableDataItem) {
     alert(error)
   }
 }
+
 async function handleConfirm() {
   try {
-    if (form.value.orderId) {
+    if (form.value.id) {
       await SysUserControllerService.updateUsingPut4(form.value)
     } else {
       await SysUserControllerService.addUsingPost4(form.value)
@@ -119,18 +121,19 @@ async function handleConfirm() {
 
 async function handleSearch() {
   try {
-    const response: TableDataItem[] = await SysUserControllerService.searchUsingGet4(searchKeyword.value)
+    const response: TableDataItem[] = await SysUserControllerService.findByNameAndEmailUsingGet(searchKeyword.value)
     tableData.value = response
   } catch (error) {
     alert(error)
   }
 }
+
 onMounted(() => {
   fetchData()
 })
 </script>
 <style>
 .search-form {
-  margin-bottom: 20px;
+  margin-left: 20%;
 }
 </style>

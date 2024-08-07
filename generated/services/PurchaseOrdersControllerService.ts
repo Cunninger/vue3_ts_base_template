@@ -66,6 +66,53 @@ export class PurchaseOrdersControllerService {
         });
     }
     /**
+     * 根据订单日期范围查询
+     * @param end end
+     * @param start start
+     * @returns PurchaseOrders OK
+     * @throws ApiError
+     */
+    public static selectByOrderDateBetweenUsingGet(
+        end?: string,
+        start?: string,
+    ): CancelablePromise<Array<PurchaseOrders>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/purchase_orders/selectByOrderDateBetween',
+            query: {
+                'end': end,
+                'start': start,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+    /**
+     * 根据order_id 或者 product_id查询
+     * @param orderIdOrProductId orderIdOrProductId
+     * @returns PurchaseOrders OK
+     * @throws ApiError
+     */
+    public static selectByOrderIdOrProductIdUsingGet(
+        orderIdOrProductId?: number,
+    ): CancelablePromise<Array<PurchaseOrders>> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/purchase_orders/selectByOrderIdOrProductId',
+            query: {
+                'orderIdOrProductId': orderIdOrProductId,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+    /**
      * selectOne
      * @param id id
      * @returns PurchaseOrders OK

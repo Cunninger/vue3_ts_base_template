@@ -9,7 +9,7 @@ import {isCollapse} from '@/components/layout/isCollapse.ts'
 
       <a class="logo" href="/">
         <img alt="" src="@/assets/logo.svg"/>
-      <h1> HelloWorld</h1>
+      <h1> Hello world</h1>
       </a>
       <el-sub-menu>
         <template #title>
@@ -21,7 +21,7 @@ import {isCollapse} from '@/components/layout/isCollapse.ts'
 
         <el-menu-item index="/usermanage">
           <el-icon>
-            <IEpSetting />
+            <IEpUser />
           </el-icon>
           <span> 用户管理</span>
         </el-menu-item>
@@ -33,33 +33,29 @@ import {isCollapse} from '@/components/layout/isCollapse.ts'
       <el-sub-menu>
         <template #title>
           <el-icon>
-            <IEpSetting />
+            <IEpPromotion />
           </el-icon>
           <span>业务管理</span>
         </template>
         <el-menu-item index="/products">
-          <el-icon>
-            <IEpSetting />
-          </el-icon>
+
+            <el-icon><Menu /></el-icon>
+
           <span> 货物管理</span>
         </el-menu-item>
         <el-menu-item index="/inventory">
-          <el-icon>
-            <IEpSetting />
-          </el-icon>
+
+            <el-icon><MessageBox /></el-icon>
+
           <span> 库存管理</span>
         </el-menu-item>
         <el-menu-item index="/purchaseorders">
-          <el-icon>
-            <IEpSetting />
-          </el-icon>
+          <el-icon><Switch /></el-icon>
           <span> 采购管理</span>
         </el-menu-item>
 
         <el-menu-item index="/salesorders">
-          <el-icon>
-            <IEpSetting />
-          </el-icon>
+          <el-icon><Histogram /></el-icon>
           <span> 销售管理</span>
         </el-menu-item>
       </el-sub-menu>
